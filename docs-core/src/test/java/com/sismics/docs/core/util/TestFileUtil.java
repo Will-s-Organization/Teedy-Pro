@@ -26,8 +26,8 @@ import java.util.Date;
 public class TestFileUtil {
     @Test
     public void extractContentOpenDocumentTextTest() throws Exception {
-        // Path path = Paths.get(ClassLoader.getSystemResource("file/document.odt").toURI());
-        // FormatHandler formatHandler = FormatHandlerUtil.find(MimeTypeUtil.guessMimeType(path, "document.odt"));
+        Path path = Paths.get(ClassLoader.getSystemResource("file/document.odt").toURI());
+        FormatHandler formatHandler = FormatHandlerUtil.find(MimeTypeUtil.guessMimeType(path, "document.odt"));
         // Assert.assertNotNull(formatHandler);
         // Assert.assertTrue(formatHandler instanceof OdtFormatHandler);
         // String content = formatHandler.extractContent("eng", path);
