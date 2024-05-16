@@ -1,18 +1,27 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Install Multi-Module Project') {
             steps {
-                pwsh 'mvn -B -DskipTests clean package'
+                bat 'mvn -B clean install -DskipTests'
             }
         }
-        stage('pmd') {
+        stage('Build') {
             steps {
-                pwsh 'mvn pmd:pmd'
+                bat 'mvn -B -DskipTests clean package'
+            }
+        }
+        stage('PMD') {
+            steps {
+                bat 'mvn pmd:pmd'
+            }
+        }
+        stage('Test') {
+            steps {
+                bat 'mvn test'
             }
         }
     }
-
     post {
         always {
             archiveArtifacts artifacts: '**/target/site/**', fingerprint: true
@@ -21,4 +30,3 @@ pipeline {
         }
     }
 }
-
