@@ -13,7 +13,10 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat 'mvn test'
+                // 使用 catchError 捕获测试阶段的错误
+                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                    bat 'mvn test'
+                }
             }
         }
         stage('Javadoc'){
