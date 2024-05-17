@@ -6,11 +6,6 @@ pipeline {
                 bat 'mvn -B clean install -DskipTests'
             }
         }
-        stage('Build') {
-            steps {
-                bat 'mvn -B -DskipTests clean package'
-            }
-        }
         stage('PMD') {
             steps {
                 bat 'mvn pmd:pmd'
@@ -19,6 +14,11 @@ pipeline {
         stage('Test') {
             steps {
                 bat 'mvn test'
+            }
+        }
+        stage('Javadoc'){
+            steps{
+                bat 'mvn javadoc:javadoc'
             }
         }
     }
