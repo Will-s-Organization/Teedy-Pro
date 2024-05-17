@@ -17,11 +17,11 @@ public class TestPdfFormatHandler {
      */
     @Test
     public void testIssue373() throws Exception {
-        // PdfFormatHandler formatHandler = new PdfFormatHandler();
-        // String content = formatHandler.extractContent("deu", Paths.get(ClassLoader.getSystemResource("file/issue373.pdf").toURI()));
-        // Assert.assertTrue(content.contains("Aufrechterhaltung"));
-        // Assert.assertTrue(content.contains("Außentemperatur"));
-        // Assert.assertTrue(content.contains("Grundumsatzmessungen"));
-        // Assert.assertTrue(content.contains("ermitteln"));
+        PdfFormatHandler formatHandler = new PdfFormatHandler();
+        String content = formatHandler.extractContent("deu", Paths.get(ClassLoader.getSystemResource("file/issue373.pdf").toURI()));
+        Assert.assertTrue(content.contains("Aufrechterhaltung"));
+        Assert.assertTrue(content.contains("Außentemperatur"));
+        Assert.assertTrue(content.contains("Grundumsatzmessungen"));
+        Assert.assertTrue(content.contains("ermitteln"));
     }
 }
